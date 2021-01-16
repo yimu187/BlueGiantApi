@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  postgres:
+    image: 'postgres:12-alpine'
+    volumes:
+       - c:/dev/postgres:/var/lib/postgresql/data
+    environment:
+       POSTGRES_PASSWORD: TASKPASSWORD
+       POSTGRES_USER: TASKUSER
+    ports:
+      - '5432:5432'
+
+  task:
+    image: 'yimu187/task-app'
+    ports:
+      - '8061:8061'
+
+volumes:
+  data:
+  logs:
