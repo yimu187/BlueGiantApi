@@ -6,6 +6,7 @@ services:
     # Aşağıdaki c:/dev/postgres dosya yolunu kendi bilgisayarınızda var olan
     # bir dosya yolu ile değiştiremeniz gerekmektedir.
     # Eğer veriyi tutmak istemiyorsanız  volumes kısmını silebilirsiniz
+    # (Volumes satırı ve alt satır)
     volumes:
        - c:/dev/postgres:/var/lib/postgresql/data
     environment:
