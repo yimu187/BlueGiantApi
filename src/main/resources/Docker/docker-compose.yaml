@@ -2,6 +2,10 @@ version: "3.8"
 services:
   postgres:
     image: 'postgres:12-alpine'
+    # Eğer containerin tekrar durdurulduğunda veri kaybı olmasını istemiyorsanız,
+    # Aşağıdaki c:/dev/postgres dosya yolunu kendi bilgisayarınızda var olan
+    # bir dosya yolu ile değiştiremeniz gerekmektedir.
+    # Eğer veriyi tutmak istemiyorsanız  volumes kısmını silebilirsiniz
     volumes:
        - c:/dev/postgres:/var/lib/postgresql/data
     environment:
