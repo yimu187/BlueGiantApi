@@ -18,7 +18,7 @@ public class FormDataController {
     @Autowired
     FormDataService formDataService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ModelMap getAllFormData(){
         ModelMap result = new ModelMap();
 
@@ -29,7 +29,7 @@ public class FormDataController {
         return result;
     }
 
-    @PostMapping("/save")
+    @PostMapping
     public ModelMap saveFormData(@RequestBody FormDataDto formDataDto){
         ModelMap result = new ModelMap();
 
@@ -44,7 +44,7 @@ public class FormDataController {
         return result;
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping
     public ModelMap deleteFormData(@RequestBody FormDataDto formDataDto){
         ModelMap result = new ModelMap();
 
