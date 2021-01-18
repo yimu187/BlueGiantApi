@@ -1,5 +1,6 @@
 package com.bluegiant.task.config;
 
+import com.bluegiant.task.interceptor.EntityInterceptor;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -60,6 +61,9 @@ public class DataSourceConfiguration implements ApplicationContextAware {
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("postgres.hibernate.hbm2ddl.auto"));
 
         properties.put("javax.persistence.validation.mode", env.getProperty("postgres.javax.persistence.validation.mode"));
+
+        EntityInterceptor entityInterceptor = applicationContext.getBean(EntityInterceptor.class);
+        properties.put("hibernate.ejb.interceptor", entityInterceptor);
 
         return properties;
     }
