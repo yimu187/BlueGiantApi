@@ -24,7 +24,7 @@ public class FormDataServiceImpl extends AbstractService implements FormDataServ
 
     @Override
     public FormData saveFormData(FormData formData) {
-        return (FormData) getJpaDao().save(formData);
+        return (FormData) saveEntity(formData);
     }
 
     @Override

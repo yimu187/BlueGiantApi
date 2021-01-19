@@ -1,11 +1,15 @@
 package com.bluegiant.task.model;
 
 import com.bluegiant.task.model.base.BaseEntity;
+import org.hibernate.envers.Audited;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "FORM_DATA")
+@EntityListeners(AuditingEntityListener.class)
+@Audited
 public class FormData extends BaseEntity {
 
     @Id

@@ -1,6 +1,5 @@
 package com.bluegiant.task.config;
 
-import com.bluegiant.task.interceptor.EntityInterceptor;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -9,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
+import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -24,9 +25,11 @@ import java.util.Properties;
 @ComponentScan(basePackages ={"com.bluegiant.task.model"})
 @EnableJpaRepositories(
         basePackages = {"com.bluegiant.task.dao"},
-        entityManagerFactoryRef = "entityManagerFactory"
+        entityManagerFactoryRef = "entityManagerFactory",
+        repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class
         )
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableJpaAuditing(auditorAwareRef = "auditorAwareImpl")
 public class DataSourceConfiguration implements ApplicationContextAware {
 
     @Bean("entityManagerFactory")
@@ -62,8 +65,7 @@ public class DataSourceConfiguration implements ApplicationContextAware {
 
         properties.put("javax.persistence.validation.mode", env.getProperty("postgres.javax.persistence.validation.mode"));
 
-        EntityInterceptor entityInterceptor = applicationContext.getBean(EntityInterceptor.class);
-        properties.put("hibernate.ejb.interceptor", entityInterceptor);
+        properties.put("org.hibernate.envers.auditTableSuffix", "AUD");
 
         return properties;
     }
