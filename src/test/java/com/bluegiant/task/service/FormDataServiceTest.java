@@ -37,7 +37,7 @@ public class FormDataServiceTest {
 
     @Test
     public void findAllFormDataByNameAndSurName(){
-        String ad = "MURAT";
+        String ad = "GOKCE";
         String soyad = "YILMAZ";
         saveFormData(ad,soyad, "adres");
         List<FormData> list = formDataService.findAllFormDataByNameAndSurName(ad, soyad);
@@ -56,7 +56,7 @@ public class FormDataServiceTest {
 
     @Test
     public void validateNameSurname(){
-        String ad = "MURAT";
+        String ad = "NUR";
         String soyad = "YILMAZ";
         saveFormData(ad,soyad, "adres");
         Assertions.assertThatThrownBy(() ->  saveFormData(ad,soyad, "adres"))
