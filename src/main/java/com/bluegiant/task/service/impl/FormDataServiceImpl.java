@@ -32,6 +32,7 @@ public class FormDataServiceImpl extends AbstractService implements FormDataServ
     private void validateNameSurname(FormData formData) {
         FormDataDao dao = (FormDataDao)getJpaDao();
         List<FormData> list = dao.findAllFormDataByNameAndSurName(formData.getAd(), formData.getSoyad());
+
         if(!list.isEmpty()){
             throw new TaskException("Aynı Ad ve Soyad ile kayıt yapılmamalıdır");
         }
