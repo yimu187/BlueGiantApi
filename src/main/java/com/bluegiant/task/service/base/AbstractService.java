@@ -29,8 +29,9 @@ public abstract class AbstractService<E extends BaseEntity, D extends JpaReposit
         }
     }
 
+
     public D getJpaDao() {
-        return jpaDao;
+        return ApplicationContextHolder.getApplicationContext().getBean(jpaDaoClass);
     }
 
     public Class<E> getEntityClass() {

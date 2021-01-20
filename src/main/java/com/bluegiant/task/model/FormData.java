@@ -22,6 +22,9 @@ public class FormData extends BaseEntity {
     @Column(name = "ADRES", length = 500)
     private String adres;
 
+    @Column(name = "DOGUM_YERI", length = 100)
+    private String dogumYeri;
+
     public Long getId() {
         return id;
     }
@@ -52,5 +55,13 @@ public class FormData extends BaseEntity {
 
     public void setAdres(String adres) {
         this.adres = adres;
+    }
+
+    public String getDogumYeri() {
+        return dogumYeri;
+    }
+
+    public void setDogumYeri(String dogumYeri) {
+        this.dogumYeri = dogumYeri;
     }
 }
