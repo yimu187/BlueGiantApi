@@ -10,6 +10,8 @@ public class FormDataDto {
 
     private String adres;
 
+    private String dogumYeri;
+
     public Long getId() {
         return id;
     }
@@ -40,5 +42,13 @@ public class FormDataDto {
 
     public void setAdres(String adres) {
         this.adres = adres;
+    }
+
+    public String getDogumYeri() {
+        return dogumYeri;
+    }
+
+    public void setDogumYeri(String dogumYeri) {
+        this.dogumYeri = dogumYeri;
     }
 }

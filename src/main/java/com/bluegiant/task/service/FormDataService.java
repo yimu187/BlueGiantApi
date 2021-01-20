@@ -11,4 +11,6 @@ public interface FormDataService {
     FormData saveFormData(FormData formData);
 
     void deleteById(Long formId);
+
+    List<FormData> findAllFormDataByNameAndSurName(String ad, String soyad);
 }

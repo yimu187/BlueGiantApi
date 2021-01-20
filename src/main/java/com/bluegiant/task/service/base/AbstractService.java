@@ -5,8 +5,6 @@ import com.bluegiant.task.exception.TaskException;
 import com.bluegiant.task.model.base.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
 public abstract class AbstractService<E extends BaseEntity, D extends JpaRepository> {
 
     private Class<E> entityClass;
@@ -31,21 +29,9 @@ public abstract class AbstractService<E extends BaseEntity, D extends JpaReposit
         }
     }
 
-    public E saveEntity(E entity){
-        if(entity.getId() != null){
-            Optional optEnt = getJpaDao().findById(entity.getId());
-            if(optEnt.isPresent()){
-                BaseEntity baseEntity = (BaseEntity)optEnt.get();
-                entity.setSaveUserId(baseEntity.getSaveUserId());
-                entity.setSaveTime(baseEntity.getSaveTime());
-            }
-        }
-
-        return (E)getJpaDao().save(entity);
-    }
 
     public D getJpaDao() {
-        return jpaDao;
+        return ApplicationContextHolder.getApplicationContext().getBean(jpaDaoClass);
     }
 
     public Class<E> getEntityClass() {

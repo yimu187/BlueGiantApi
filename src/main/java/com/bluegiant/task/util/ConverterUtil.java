@@ -2,24 +2,20 @@ package com.bluegiant.task.util;
 
 import com.bluegiant.task.dto.FormDataDto;
 import com.bluegiant.task.model.FormData;
+import org.springframework.beans.BeanUtils;
 
 public class ConverterUtil {
 
     public static FormData toFormData(FormDataDto formDataDto) {
         FormData formData = new FormData();
-        formData.setId(formDataDto.getId());
-        formData.setAd(formDataDto.getAd());
-        formData.setSoyad(formDataDto.getSoyad());
-        formData.setAdres(formDataDto.getAdres());
+        BeanUtils.copyProperties(formDataDto, formData);
         return formData;
     }
 
     public static FormDataDto toFormDataDto(FormData formData) {
         FormDataDto formDataDto = new FormDataDto();
-        formDataDto.setId(formData.getId());
-        formDataDto.setAd(formData.getAd());
-        formDataDto.setSoyad(formData.getSoyad());
-        formDataDto.setAdres(formData.getAdres());
+        BeanUtils.copyProperties(formData, formDataDto);
         return formDataDto;
     }
+
 }
