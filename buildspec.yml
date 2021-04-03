@@ -13,4 +13,4 @@ phases:
       - mv target/task-1.0.6.jar ./
 artifacts:
   files:
-    - target/task-1.0.6.jar
+    - target/**
