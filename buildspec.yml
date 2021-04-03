@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  pre-build:
+    commands:
+      - echo "Entered the pre build phase"
+  build:
+    commands:
+      - echo "Entered the build phase"
+      - mvn clean install
+  post-build:
+    commands:
+      - echo "Entered the post-build phasae"
+      - mv target/task-1.0.5.jar ./
+artifacts:
+  files:
+    - target/task-1.0.5.jar
