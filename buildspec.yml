@@ -10,7 +10,7 @@ phases:
   post_build:
     commands:
       - echo "Entered the post-build phasae"
-      - mv target/task-1.0.5.jar ./
+      - mv target/task-1.0.6.jar ./
 artifacts:
   files:
-    - target/task-1.0.5.jar
+    - target/task-1.0.6.jar
